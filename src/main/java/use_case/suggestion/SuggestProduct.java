@@ -28,23 +28,11 @@ public class SuggestProduct {
 
         List<Product> allProducts = this.productRepository.findAll();
         List<Product> relatedProducts = new ArrayList<Product>();
-        /*
         for(Product product: allProducts) {
-                switch (foundProduct.getType()) {
-                    case ProductType.DRYFOOD:
-                        //return ProductType.WETFOOD;
-                        if (product.getType() == ProductType.WETFOOD) {}
-                    case ProductType.WETFOOD:
-                        return ProductType.DRYFOOD;
-                    case EXPENSIVEFOOD:
-                        return ProductType.LOWPRICEFOOD;
-                    case LOWPRICEFOOD:
-                        return ProductType.EXPENSIVEFOOD;
-                    default:
-                        throw new IllegalArgumentException("Unknown product type: " + type);
-                }
-        });
-*/
+            if(product.getType() == foundProduct.getType()){
+                relatedProducts.add(product);
+            }
+        }
 
         return relatedProducts;
     }
