@@ -12,7 +12,7 @@ public class Product {
         this.type = type;
     }
 
-    public int getType() {
-        return type;
+    public ProductType getType() {
+        return this.type;
     }
 }
