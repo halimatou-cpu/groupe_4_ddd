@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public interface ProductRepository {
-    Product findProductById(int productId);
+    Product findProductById(ValueObjectId productId);
 
     List<Product> findAll();
 }

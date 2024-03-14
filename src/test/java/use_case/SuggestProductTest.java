@@ -3,6 +3,8 @@ package use_case;
 import infra.FakeProductRepositoryImp;
 import model.Product;
 import model.ProductRepository;
+import model.ValueObjectId;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import use_case.suggestion.SuggestProduct;
@@ -15,9 +17,9 @@ class SuggestProductTest {
     private ProductRepository productRepo;
     private SuggestProduct suggestProduct;
 
-    private static final int idOfValidProductWithMultipleRelated = 12;
-    private static final int idOfValidProduct = 25;
-    private static final int idOfInvalidProduct = 5;
+    private static final ValueObjectId idOfValidProductWithMultipleRelated = new ValueObjectId(12);
+    private static final ValueObjectId idOfValidProduct = new ValueObjectId(25);
+    private static final ValueObjectId idOfInvalidProduct = new ValueObjectId(5);
 
     @BeforeEach
     void setUp() {
