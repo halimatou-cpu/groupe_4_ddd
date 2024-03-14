@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Product {
 
@@ -35,5 +36,16 @@ public class Product {
             }
         }
         return relatedProducts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Product product = (Product) o;
+        return getId().equals(product.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, type);
     }
 }
