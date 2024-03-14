@@ -15,4 +15,8 @@ public class Product {
     public ProductType getType() {
         return this.type;
     }
+
+    public int getId() {
+        return this.id;
+    }
 }
