@@ -30,7 +30,7 @@ class SuggestProductTest {
     @Test
     public void whenInvalidId_thenProductNotFound() {
         try {
-            List<Product> relatedProducts = suggestProduct.getRelatedProducts(idOfInvalidProduct);
+            suggestProduct.getRelatedProducts(idOfInvalidProduct);
         } catch (NotFoundException e) {
             assertEquals(e.getMessage(), "Product not found with id: " + idOfInvalidProduct);
         }

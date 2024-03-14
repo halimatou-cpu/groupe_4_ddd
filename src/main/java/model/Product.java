@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
 
     private ValueObjectId id;
@@ -22,5 +25,15 @@ public class Product {
 
     public String getName() {
         return this.name;
+    }
+
+    public List<Product> relatedProducts(List<Product> products) {
+        List<Product> relatedProducts = new ArrayList<Product>();
+        for (Product product : products) {
+            if (product.getType() == this.getType() && !product.getId().equals(this.getId())){
+                relatedProducts.add(product);
+            }
+        }
+        return relatedProducts;
     }
 }

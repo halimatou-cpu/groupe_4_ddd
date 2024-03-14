@@ -15,21 +15,17 @@ public class SuggestProduct {
     }
 
     public List<Product> getRelatedProducts(ValueObjectId productId) {
-        List<Product> relatedProducts = new ArrayList<Product>();
         try {
             Product foundProduct = this.productRepository.findProductById(productId);
 
             List<Product> allProducts = this.productRepository.findAll();
-            for (Product product : allProducts) {
-                if (product.getType() == foundProduct.getType() && !product.getId().equals(foundProduct.getId())){
-                    relatedProducts.add(product);
-                }
-            }
+            return foundProduct.relatedProducts(allProducts);
         } catch (Exception e) {
             throw e;
         }
-        return relatedProducts;
     }
+
+    
 
     
 
