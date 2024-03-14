@@ -1,5 +1,6 @@
 package infra;
 
+import model.Breed;
 import model.Product;
 import model.ProductRepository;
 import model.ProductType;
@@ -23,13 +24,22 @@ public class FakeProductRepositoryImp implements ProductRepository {
     @Override
     public List<Product> findAll() {
         List<Product> productList = new ArrayList<Product>();
+        List<Breed> breedList = new ArrayList<Breed>();
 
-        productList.add(new Product(new ValueObjectId(12), "Croquette pour chat", ProductType.DRYFOOD));
-        productList.add(new Product(new ValueObjectId(13), "Croquette pour chat", ProductType.DRYFOOD));
-        productList.add(new Product(new ValueObjectId(14), "Croquette pour chat", ProductType.DRYFOOD));
-        productList.add(new Product(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD));
-        productList.add(new Product(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.LOWPRICEFOOD));
-        productList.add(new Product(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD));
+        breedList.add(Breed.CHIHUAHUA);
+        breedList.add(Breed.BULLDOG);   
+        breedList.add(Breed.BULLDOG);
+        breedList.add(Breed.DACHSHUND);
+        breedList.add(Breed.GERMAN_SHEPHERD);
+        breedList.add(Breed.GOLDEN_RETRIEVER);
+        breedList.add(Breed.LABRADOR_RETRIEVER);
+
+        productList.add(new Product(new ValueObjectId(12), "Croquette pour chat", ProductType.DRYFOOD, breedList));
+        productList.add(new Product(new ValueObjectId(13), "Croquette pour chat", ProductType.DRYFOOD, breedList));
+        productList.add(new Product(new ValueObjectId(14), "Croquette pour chat", ProductType.DRYFOOD, breedList));
+        productList.add(new Product(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD, breedList));
+        productList.add(new Product(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.LOWPRICEFOOD, breedList));
+        productList.add(new Product(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD, breedList));
 
         return productList;
     }

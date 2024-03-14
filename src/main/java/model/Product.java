@@ -9,11 +9,13 @@ public class Product {
     private ValueObjectId id;
     private String name;
     private ProductType type;
+    private final List<Breed> breed;
 
-    public Product(ValueObjectId id, String name, ProductType type){
+    public Product(ValueObjectId id, String name, ProductType type, List<Breed> breed){
         this.id = id;
         this.name = name;
         this.type = type;
+        this.breed = breed;
     }
 
     public ProductType getType() {
@@ -26,6 +28,10 @@ public class Product {
 
     public String getName() {
         return this.name;
+    }
+    
+    public List<Breed> getBreed() {
+        return this.breed;
     }
 
     public List<Product> relatedProducts(List<Product> products) {
