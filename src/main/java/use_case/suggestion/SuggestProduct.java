@@ -15,15 +15,12 @@ public class SuggestProduct {
 
     public List<DogFoodProduct> getRelatedProducts(ValueObjectId productId) {
         DogFoodProduct foundProduct;
-        try {
-            foundProduct = this.productRepository.findProductById(productId);
-        } catch (NotFoundException e) {
-            throw e;
-        }
+        foundProduct = this.productRepository.findProductById(productId);
+
         List<DogFoodProduct> allProducts = this.productRepository.findAll();
 
-        List<DogFoodProduct> relatedByType = foundProduct.typeBasedSuggestion(allProducts);
-        List<DogFoodProduct> relatedByTypeAndBreed = foundProduct.breedBasedSuggestion(relatedByType);
-        return relatedByTypeAndBreed;
+        List<DogFoodProduct> productsWithSameType = foundProduct.getProductsWithSameType(allProducts);
+        List<DogFoodProduct> productsWithSameTypeAndBreed = foundProduct.getProductsWithSameBreed(productsWithSameType);
+        return productsWithSameTypeAndBreed;
     }
 }

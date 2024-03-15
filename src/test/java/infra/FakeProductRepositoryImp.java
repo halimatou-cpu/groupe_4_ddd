@@ -14,9 +14,9 @@ public class FakeProductRepositoryImp implements ProductRepository {
     @Override
     public DogFoodProduct findProductById(ValueObjectId productId) {
         DogFoodProduct product = this.findAll().stream()
-            .filter(p -> p.getId().equals(productId))
-            .findFirst()
-            .orElseThrow(() -> new NotFoundException("Product not found with id: " + productId));
+                .filter(p -> p.getId().equals(productId))
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException("Product not found with id: " + productId));
         return product;
     }
 
@@ -30,16 +30,13 @@ public class FakeProductRepositoryImp implements ProductRepository {
         List<Breed> breedPrenium = new ArrayList<Breed>();
         List<Breed> breedListFish = new ArrayList<Breed>();
 
-
-        breedListUranium.add(Breed.CHIHUAHUA);  
+        breedListUranium.add(Breed.CHIHUAHUA);
         breedListUranium.add(Breed.GERMAN_SHEPHERD);
         breedListUranium.add(Breed.LABRADOR_RETRIEVER);
 
-
         breedListCold.add(Breed.CHIHUAHUA);
-        breedListCold.add(Breed.BULLDOG);   
-     
-  
+        breedListCold.add(Breed.BULLDOG);
+
         breedListRhum.add(Breed.BULLDOG);
         breedListRhum.add(Breed.DACHSHUND);
         breedListRhum.add(Breed.GERMAN_SHEPHERD);
@@ -52,12 +49,12 @@ public class FakeProductRepositoryImp implements ProductRepository {
 
         breedListFish.add(Breed.LABRADOR_RETRIEVER);
 
-        productList.add(new DogFoodProduct(new ValueObjectId(12), "Croquette pour chien uranium", ProductType.DRYFOOD, breedListUranium));
-        productList.add(new DogFoodProduct(new ValueObjectId(13), "Croquette pour chien frois", ProductType.DRYFOOD, breedListCold));
-        productList.add(new DogFoodProduct(new ValueObjectId(14), "Croquette pour chien au rhum", ProductType.DRYFOOD, breedListRhum));
-        productList.add(new DogFoodProduct(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD, breedPrenium));
-        productList.add(new DogFoodProduct(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.DRYFOOD, breedList));
-        productList.add(new DogFoodProduct(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD, breedListFish));
+        productList.add(new DogFoodProduct(new ValueObjectId(12), ProductType.DRYFOOD, breedListUranium));
+        productList.add(new DogFoodProduct(new ValueObjectId(13), ProductType.DRYFOOD, breedListCold));
+        productList.add(new DogFoodProduct(new ValueObjectId(14), ProductType.DRYFOOD, breedListRhum));
+        productList.add(new DogFoodProduct(new ValueObjectId(25), ProductType.EXPENSIVEFOOD, breedPrenium));
+        productList.add(new DogFoodProduct(new ValueObjectId(37), ProductType.DRYFOOD, breedList));
+        productList.add(new DogFoodProduct(new ValueObjectId(48), ProductType.WETFOOD, breedListFish));
 
         return productList;
     }

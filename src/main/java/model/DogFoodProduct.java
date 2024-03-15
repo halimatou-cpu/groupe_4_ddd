@@ -7,13 +7,11 @@ import java.util.Objects;
 public class DogFoodProduct { 
 
     private ValueObjectId id;
-    private String name;
     private ProductType type;
     private final List<Breed> breeds;
 
-    public DogFoodProduct(ValueObjectId id, String name, ProductType type, List<Breed> breeds) {
+    public DogFoodProduct(ValueObjectId id, ProductType type, List<Breed> breeds) {
         this.id = id;
-        this.name = name;
         this.type = type;
         this.breeds = breeds;
     }
@@ -26,15 +24,11 @@ public class DogFoodProduct {
         return this.id;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public List<Breed> getBreed() {
         return this.breeds;
     }
 
-    public List<DogFoodProduct> typeBasedSuggestion(List<DogFoodProduct> products) {
+    public List<DogFoodProduct> getProductsWithSameType(List<DogFoodProduct> products) {
         List<DogFoodProduct> relatedProducts = new ArrayList<DogFoodProduct>();
         for (DogFoodProduct product : products) {
             if (product.getType() == this.type && !this.equals(product)) {
@@ -44,7 +38,7 @@ public class DogFoodProduct {
         return relatedProducts;
     }
 
-    public List<DogFoodProduct> breedBasedSuggestion(List<DogFoodProduct> products) {
+    public List<DogFoodProduct> getProductsWithSameBreed(List<DogFoodProduct> products) {
         List<DogFoodProduct> relevantProducts = new ArrayList<DogFoodProduct>();
 
         for (DogFoodProduct product : products) {
@@ -67,6 +61,6 @@ public class DogFoodProduct {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type);
+        return Objects.hash(id, type);
     }
 }
