@@ -1,6 +1,4 @@
-
 package model;
-
 
 public enum Breed {
 		BEAGLE,
@@ -15,3 +13,4 @@ public enum Breed {
 		SIBERIAN_HUSKY,
 		YORKSHIRE_TERRIER
 }
+

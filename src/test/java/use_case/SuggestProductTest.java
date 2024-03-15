@@ -1,7 +1,7 @@
 package use_case;
 
 import infra.FakeProductRepositoryImp;
-import model.Product;
+import model.DogFoodProduct;
 import model.ProductRepository;
 import model.ValueObjectId;
 
@@ -38,13 +38,13 @@ class SuggestProductTest {
 
     @Test
     void no_related_product() {
-       List<Product> relatedProducts = suggestProduct.getRelatedProducts(idOfValidProduct);
+       List<DogFoodProduct> relatedProducts = suggestProduct.getRelatedProducts(idOfValidProduct);
        assertEquals(relatedProducts.size(), 0);
     }
 
     @Test
     void one_related_product() {
-        List<Product> relatedProducts = suggestProduct.getRelatedProducts(idOfValidProductWithMultipleRelated);
+        List<DogFoodProduct> relatedProducts = suggestProduct.getRelatedProducts(idOfValidProductWithMultipleRelated);
         assertEquals(relatedProducts.size(), 2);
     }
 }

@@ -1,6 +1,6 @@
 package use_case.suggestion;
 
-import model.Product;
+import model.DogFoodProduct;
 import model.ProductRepository;
 import model.ValueObjectId;
 import use_case.NotFoundException;
@@ -14,20 +14,15 @@ public class SuggestProduct {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getRelatedProducts(ValueObjectId productId) {
-        Product foundProduct;
+    public List<DogFoodProduct> getRelatedProducts(ValueObjectId productId) {
+        DogFoodProduct foundProduct;
         try {
             foundProduct = this.productRepository.findProductById(productId);
         } catch (NotFoundException e) {
             throw e;
         }
-        List<Product> allProducts = this.productRepository.findAll();
+        List<DogFoodProduct> allProducts = this.productRepository.findAll();
 
         return foundProduct.relatedProducts(allProducts);
     }
-
-    
-
-    
-
 }
