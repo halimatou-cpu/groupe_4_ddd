@@ -9,13 +9,13 @@ public class DogFoodProduct { // renamae this class to DogProduct, maybe DogFood
     private ValueObjectId id;
     private String name;
     private ProductType type;
-    private final List<Breed> breed;
+    private final List<Breed> breeds;
 
-    public DogFoodProduct(ValueObjectId id, String name, ProductType type, List<Breed> breed){
+    public DogFoodProduct(ValueObjectId id, String name, ProductType type, List<Breed> breeds) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.breed = breed;
+        this.breeds = breeds;
     }
 
     public ProductType getType() {
@@ -29,36 +29,51 @@ public class DogFoodProduct { // renamae this class to DogProduct, maybe DogFood
     public String getName() {
         return this.name;
     }
-    
+
     public List<Breed> getBreed() {
-        return this.breed;
+        return this.breeds;
     }
 
-    public List<DogFoodProduct> relatedProducts(List<DogFoodProduct> products) {
+    public List<DogFoodProduct> typeBasedSuggestion(List<DogFoodProduct> products) {
         List<DogFoodProduct> relatedProducts = new ArrayList<DogFoodProduct>();
         for (DogFoodProduct product : products) {
-            if (product.getType() == this.getType() && !product.getId().equals(this.getId())){
+            if (product.getType() == this.type && !this.equals(product)) {
                 relatedProducts.add(product);
             }
         }
         return relatedProducts;
     }
-    // Trouver les produits dont les breeds correspondent aux miens 
-    // Par exemple je suis compatible avec les GERMAN_SHEPHERD et les GOLDEN_RETRIEVER
-    // Un autre produit est compatible avec les GERMAN_SHEPHERD et les LABRADOR_RETRIEVER
-    // Je peux le suggérer comme produit compatible.
-    // animal.getRelevantProducts(products) 
-    /*
-      getRelevantProducts(products) {
-        List<Product> relevantProducts = new ArrayList<Product>();
-        for (Product product : products) {
-            if (product.getBreed().containsAll(this.getBreed()) && !product.getId().equals(this.getId())){
-                relevantProducts.add(product);
+
+    public List<DogFoodProduct> breedBasedSuggestion(List<DogFoodProduct> products) {
+        List<DogFoodProduct> relevantProducts = new ArrayList<DogFoodProduct>();
+        // for (DogFoodProduct product : products) {
+        //     if (!this.equals(product)) {
+        //         for (Breed breed : this.breeds) {
+        //             if (product.getBreed().contains(breed)) {
+        //                 relevantProducts.add(product);
+        //                 break;
+        //             }
+        //         }
+        //     }
+        // }
+        for (DogFoodProduct product : products) {
+            if (!this.equals(product)) {
+                List<Breed> commonBreeds = new ArrayList<>(this.breeds);
+                commonBreeds.retainAll(product.getBreed());
+                if (!commonBreeds.isEmpty()) {
+                    relevantProducts.add(product);
+                }
             }
         }
         return relevantProducts;
-      }
-    */
+    }
+    // Trouver les produits dont les breeds correspondent aux miens
+    // Par exemple je suis compatible avec les GERMAN_SHEPHERD et les
+    // GOLDEN_RETRIEVER
+    // Un autre produit est compatible avec les GERMAN_SHEPHERD et les
+    // LABRADOR_RETRIEVER
+    // Je peux le suggérer comme produit compatible.
+    // animal.getRelevantProducts(products)
 
     @Override
     public boolean equals(Object o) {

@@ -23,6 +23,8 @@ public class SuggestProduct {
         }
         List<DogFoodProduct> allProducts = this.productRepository.findAll();
 
-        return foundProduct.relatedProducts(allProducts);
+        List<DogFoodProduct> relatedByType = foundProduct.typeBasedSuggestion(allProducts);
+        List<DogFoodProduct> relatedByBreed = foundProduct.breedBasedSuggestion(relatedByType);
+        return relatedByBreed;
     }
 }
