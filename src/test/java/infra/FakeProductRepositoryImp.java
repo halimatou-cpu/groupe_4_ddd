@@ -23,22 +23,42 @@ public class FakeProductRepositoryImp implements ProductRepository {
     @Override
     public List<DogFoodProduct> findAll() {
         List<DogFoodProduct> productList = new ArrayList<DogFoodProduct>();
+        List<Breed> breedListUranium = new ArrayList<Breed>();
+        List<Breed> breedListCold = new ArrayList<Breed>();
+        List<Breed> breedListRhum = new ArrayList<Breed>();
         List<Breed> breedList = new ArrayList<Breed>();
+        List<Breed> breedPrenium = new ArrayList<Breed>();
+        List<Breed> breedListFish = new ArrayList<Breed>();
 
-        breedList.add(Breed.CHIHUAHUA);
-        breedList.add(Breed.BULLDOG);   
-        breedList.add(Breed.BULLDOG);
+
+        breedListUranium.add(Breed.CHIHUAHUA);  
+        breedListUranium.add(Breed.DACHSHUND);
+        breedListUranium.add(Breed.GERMAN_SHEPHERD);
+        breedListUranium.add(Breed.LABRADOR_RETRIEVER);
+
+
+        breedListCold.add(Breed.CHIHUAHUA);
+        breedListCold.add(Breed.BULLDOG);   
+     
+  
+        breedListRhum.add(Breed.BULLDOG);
+        breedListRhum.add(Breed.DACHSHUND);
+        breedListRhum.add(Breed.GERMAN_SHEPHERD);
+        breedListRhum.add(Breed.GOLDEN_RETRIEVER);
+        breedListRhum.add(Breed.LABRADOR_RETRIEVER);
+
+        breedPrenium.add(Breed.CHIHUAHUA);
+
         breedList.add(Breed.DACHSHUND);
-        breedList.add(Breed.GERMAN_SHEPHERD);
-        breedList.add(Breed.GOLDEN_RETRIEVER);
-        breedList.add(Breed.LABRADOR_RETRIEVER);
 
-        productList.add(new DogFoodProduct(new ValueObjectId(12), "Croquette pour chat", ProductType.DRYFOOD, breedList));
-        productList.add(new DogFoodProduct(new ValueObjectId(13), "Croquette pour chat", ProductType.DRYFOOD, breedList));
-        productList.add(new DogFoodProduct(new ValueObjectId(14), "Croquette pour chat", ProductType.DRYFOOD, breedList));
-        productList.add(new DogFoodProduct(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD, breedList));
+        breedListFish.add(Breed.LABRADOR_RETRIEVER);
+
+        productList.add(new DogFoodProduct(new ValueObjectId(12), "Croquette pour chien uranium", ProductType.DRYFOOD, breedListUranium));
+        productList.add(new DogFoodProduct(new ValueObjectId(13), "Croquette pour chien frois", ProductType.DRYFOOD, breedListCold));
+        productList.add(new DogFoodProduct(new ValueObjectId(14), "Croquette pour chien au rhum", ProductType.DRYFOOD, breedListRhum));
+        productList.add(new DogFoodProduct(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD, breedPrenium));
         productList.add(new DogFoodProduct(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.LOWPRICEFOOD, breedList));
-        productList.add(new DogFoodProduct(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD, breedList));
+        productList.add(new DogFoodProduct(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD, breedListFish));
 
         return productList;
     }
