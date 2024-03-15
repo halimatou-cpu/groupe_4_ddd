@@ -1,4 +1,4 @@
-package use_case;
+package use_case.suggestion;
 
 public class NotFoundException extends RuntimeException{
 		public NotFoundException(String message) {

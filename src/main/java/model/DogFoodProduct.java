@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class DogFoodProduct { // renamae this class to DogProduct, maybe DogFoodProduct would be more explicit
+public class DogFoodProduct { 
 
     private ValueObjectId id;
     private String name;
@@ -46,16 +46,7 @@ public class DogFoodProduct { // renamae this class to DogProduct, maybe DogFood
 
     public List<DogFoodProduct> breedBasedSuggestion(List<DogFoodProduct> products) {
         List<DogFoodProduct> relevantProducts = new ArrayList<DogFoodProduct>();
-        // for (DogFoodProduct product : products) {
-        //     if (!this.equals(product)) {
-        //         for (Breed breed : this.breeds) {
-        //             if (product.getBreed().contains(breed)) {
-        //                 relevantProducts.add(product);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        // }
+
         for (DogFoodProduct product : products) {
             if (!this.equals(product)) {
                 List<Breed> commonBreeds = new ArrayList<>(this.breeds);
@@ -67,13 +58,6 @@ public class DogFoodProduct { // renamae this class to DogProduct, maybe DogFood
         }
         return relevantProducts;
     }
-    // Trouver les produits dont les breeds correspondent aux miens
-    // Par exemple je suis compatible avec les GERMAN_SHEPHERD et les
-    // GOLDEN_RETRIEVER
-    // Un autre produit est compatible avec les GERMAN_SHEPHERD et les
-    // LABRADOR_RETRIEVER
-    // Je peux le suggérer comme produit compatible.
-    // animal.getRelevantProducts(products)
 
     @Override
     public boolean equals(Object o) {

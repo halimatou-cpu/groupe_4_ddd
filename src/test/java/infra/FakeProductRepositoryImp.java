@@ -5,7 +5,7 @@ import model.DogFoodProduct;
 import model.ProductRepository;
 import model.ProductType;
 import model.ValueObjectId;
-import use_case.NotFoundException;
+import use_case.suggestion.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,6 @@ public class FakeProductRepositoryImp implements ProductRepository {
 
 
         breedListUranium.add(Breed.CHIHUAHUA);  
-        breedListUranium.add(Breed.DACHSHUND);
         breedListUranium.add(Breed.GERMAN_SHEPHERD);
         breedListUranium.add(Breed.LABRADOR_RETRIEVER);
 
@@ -57,7 +56,7 @@ public class FakeProductRepositoryImp implements ProductRepository {
         productList.add(new DogFoodProduct(new ValueObjectId(13), "Croquette pour chien frois", ProductType.DRYFOOD, breedListCold));
         productList.add(new DogFoodProduct(new ValueObjectId(14), "Croquette pour chien au rhum", ProductType.DRYFOOD, breedListRhum));
         productList.add(new DogFoodProduct(new ValueObjectId(25), "Pâtée premium pour chat", ProductType.EXPENSIVEFOOD, breedPrenium));
-        productList.add(new DogFoodProduct(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.LOWPRICEFOOD, breedList));
+        productList.add(new DogFoodProduct(new ValueObjectId(37), "Croquettes économiques pour chien", ProductType.DRYFOOD, breedList));
         productList.add(new DogFoodProduct(new ValueObjectId(48), "Boîtes de thon pour chat", ProductType.WETFOOD, breedListFish));
 
         return productList;

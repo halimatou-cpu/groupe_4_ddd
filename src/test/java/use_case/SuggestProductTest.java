@@ -7,6 +7,8 @@ import model.ValueObjectId;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import use_case.suggestion.NotFoundException;
 import use_case.suggestion.SuggestProduct;
 
 import java.util.List;
@@ -43,7 +45,7 @@ class SuggestProductTest {
     }
 
     @Test
-    void one_related_product() {
+    void many_related_product() {
         List<DogFoodProduct> relatedProducts = suggestProduct.getRelatedProducts(idOfValidProductWithMultipleRelated);
         assertEquals(relatedProducts.size(), 2);
     }

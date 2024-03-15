@@ -3,7 +3,6 @@ package use_case.suggestion;
 import model.DogFoodProduct;
 import model.ProductRepository;
 import model.ValueObjectId;
-import use_case.NotFoundException;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class SuggestProduct {
         List<DogFoodProduct> allProducts = this.productRepository.findAll();
 
         List<DogFoodProduct> relatedByType = foundProduct.typeBasedSuggestion(allProducts);
-        List<DogFoodProduct> relatedByBreed = foundProduct.breedBasedSuggestion(relatedByType);
-        return relatedByBreed;
+        List<DogFoodProduct> relatedByTypeAndBreed = foundProduct.breedBasedSuggestion(relatedByType);
+        return relatedByTypeAndBreed;
     }
 }
